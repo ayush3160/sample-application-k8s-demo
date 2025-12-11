@@ -6,12 +6,13 @@ import (
 	"net/http"
 	"time"
 
+	"sample-application/config"
+	"sample-application/models"
+
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"sample-application/config"
-	"sample-application/models"
 )
 
 // Product Handlers (MongoDB)
@@ -41,7 +42,7 @@ func CreateProduct(w http.ResponseWriter, r *http.Request) {
 
 func GetAllProducts(w http.ResponseWriter, r *http.Request) {
 	collection := config.GetMongoDatabase().Collection("products")
-	
+
 	opts := options.Find().SetLimit(100)
 	cursor, err := collection.Find(context.Background(), bson.M{}, opts)
 	if err != nil {
@@ -145,7 +146,7 @@ func DeleteProduct(w http.ResponseWriter, r *http.Request) {
 
 func SearchProducts(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query().Get("q")
-	
+
 	collection := config.GetMongoDatabase().Collection("products")
 	filter := bson.M{
 		"$or": []bson.M{
@@ -223,7 +224,7 @@ func CreateCategory(w http.ResponseWriter, r *http.Request) {
 
 func GetAllCategories(w http.ResponseWriter, r *http.Request) {
 	collection := config.GetMongoDatabase().Collection("categories")
-	
+
 	cursor, err := collection.Find(context.Background(), bson.M{})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

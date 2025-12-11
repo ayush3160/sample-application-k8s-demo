@@ -13,9 +13,9 @@ import (
 )
 
 const (
-	baseURL            = "http://localhost:8080"
-	totalRequests      = 1000
-	concurrentRequests = 50
+	baseURL              = "http://localhost:8080"
+	totalRequests        = 1000
+	concurrentRequests   = 50
 	delayBetweenRequests = 50 * time.Millisecond // Delay between each request
 )
 

@@ -33,14 +33,14 @@ type Product struct {
 
 // Order represents an order (PostgreSQL)
 type Order struct {
-	ID              int       `json:"id"`
-	UserID          int       `json:"user_id"`
-	TotalAmount     float64   `json:"total_amount"`
-	Status          string    `json:"status"`
-	PaymentMethod   string    `json:"payment_method"`
-	ShippingAddress string    `json:"shipping_address"`
-	CreatedAt       time.Time `json:"created_at"`
-	UpdatedAt       time.Time `json:"updated_at"`
+	ID              int         `json:"id"`
+	UserID          int         `json:"user_id"`
+	TotalAmount     float64     `json:"total_amount"`
+	Status          string      `json:"status"`
+	PaymentMethod   string      `json:"payment_method"`
+	ShippingAddress string      `json:"shipping_address"`
+	CreatedAt       time.Time   `json:"created_at"`
+	UpdatedAt       time.Time   `json:"updated_at"`
 	Items           []OrderItem `json:"items,omitempty"`
 }
 
@@ -55,14 +55,14 @@ type OrderItem struct {
 
 // Inventory represents inventory data (MySQL)
 type Inventory struct {
-	ID                 int       `json:"id"`
-	ProductID          string    `json:"product_id"`
-	Quantity           int       `json:"quantity"`
-	WarehouseLocation  string    `json:"warehouse_location"`
-	LastRestocked      time.Time `json:"last_restocked"`
-	LowStockThreshold  int       `json:"low_stock_threshold"`
-	CreatedAt          time.Time `json:"created_at"`
-	UpdatedAt          time.Time `json:"updated_at"`
+	ID                int       `json:"id"`
+	ProductID         string    `json:"product_id"`
+	Quantity          int       `json:"quantity"`
+	WarehouseLocation string    `json:"warehouse_location"`
+	LastRestocked     time.Time `json:"last_restocked"`
+	LowStockThreshold int       `json:"low_stock_threshold"`
+	CreatedAt         time.Time `json:"created_at"`
+	UpdatedAt         time.Time `json:"updated_at"`
 }
 
 // Review represents a product review (MongoDB)

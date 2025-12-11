@@ -5,9 +5,10 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/gorilla/mux"
 	"sample-application/config"
 	"sample-application/handlers"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {

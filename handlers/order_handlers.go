@@ -5,9 +5,10 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/gorilla/mux"
 	"sample-application/config"
 	"sample-application/models"
+
+	"github.com/gorilla/mux"
 )
 
 // Order Handlers (PostgreSQL)

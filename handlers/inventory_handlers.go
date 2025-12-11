@@ -6,9 +6,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/gorilla/mux"
 	"sample-application/config"
 	"sample-application/models"
+
+	"github.com/gorilla/mux"
 )
 
 // Inventory Handlers (MySQL)
@@ -143,7 +144,7 @@ func GetSalesAnalytics(w http.ResponseWriter, r *http.Request) {
 	endDate := r.URL.Query().Get("end_date")
 
 	query := `SELECT id, product_id, quantity_sold, revenue, sale_date, created_at FROM sales_analytics WHERE sale_date BETWEEN ? AND ? LIMIT 1000`
-	
+
 	if startDate == "" {
 		startDate = time.Now().AddDate(0, -1, 0).Format("2006-01-02")
 	}
@@ -187,8 +188,8 @@ func GetPopularProducts(w http.ResponseWriter, r *http.Request) {
 	defer rows.Close()
 
 	type PopularProduct struct {
-		ProductID   string  `json:"product_id"`
-		TotalSold   int     `json:"total_sold"`
+		ProductID    string  `json:"product_id"`
+		TotalSold    int     `json:"total_sold"`
 		TotalRevenue float64 `json:"total_revenue"`
 	}
 

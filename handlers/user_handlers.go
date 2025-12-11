@@ -6,9 +6,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/gorilla/mux"
 	"sample-application/config"
 	"sample-application/models"
+
+	"github.com/gorilla/mux"
 )
 
 func HealthCheck(w http.ResponseWriter, r *http.Request) {
@@ -195,7 +196,7 @@ func AddToCart(w http.ResponseWriter, r *http.Request) {
 	query := `INSERT INTO cart (user_id, product_id, quantity) VALUES ($1, $2, $3) 
 			  ON CONFLICT (user_id, product_id) DO UPDATE SET quantity = cart.quantity + $3, updated_at = CURRENT_TIMESTAMP
 			  RETURNING id, created_at, updated_at`
-	
+
 	// Note: This requires a unique constraint on (user_id, product_id)
 	err := config.PostgresDB.QueryRow(query, item.UserID, item.ProductID, item.Quantity).
 		Scan(&item.ID, &item.CreatedAt, &item.UpdatedAt)
