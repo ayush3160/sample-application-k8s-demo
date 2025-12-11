@@ -1,0 +1,15 @@
+.env
+*.log
+*.exe
+*.test
+*.prof
+main
+load_test
+loadtester
+loadtest/load_test
+vendor/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
